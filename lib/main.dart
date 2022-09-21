@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
 
-                Row(children: [Expanded(child: Text("Size: $_height", style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
+                Row(children: [Expanded(child: Text("Size: ${_height.toStringAsFixed(1)}", style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
                 Slider(
                   value: _height,
                   max: 100,
@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   },
                 ),
-                Row(children: [Expanded(child: Text("Position (Vertical): $_vPosition", style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
+                Row(children: [Expanded(child: Text("Position (Vertical): ${_vPosition.toStringAsFixed(1)}", style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
                 Slider(
                   value: _vPosition,
                   max: (MediaQuery.of(context).size.width) / 4,
@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   },
                 ),
-                Row(children: [Expanded(child: Text("Position (Horizontal) $_hPosition", style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
+                Row(children: [Expanded(child: Text("Position (Horizontal) ${_hPosition.toStringAsFixed(1)}", style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
                 Slider(
                   value: _hPosition,
                   min: -(MediaQuery.of(context).size.width) / 2,
