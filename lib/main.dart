@@ -60,7 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.fromLTRB(10,0,10,0),
             child: Transform.translate(
                 offset: Offset(_hPosition, _vPosition),
-            child: AnimatedContainer(
+            child: Center(child: AnimatedContainer(
+
               width: _width,
               height: _height,
               decoration: BoxDecoration(
@@ -72,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
               // Provide an optional curve to make the animation feel smoother.
               curve: Curves.fastOutSlowIn,
               child: Row(children: [Expanded(child: Text(toast, style: const TextStyle(color: Colors.white), textAlign: TextAlign.center,))],),
-            ),),
+            ),),),
           ),
 
           Expanded(child: Padding(
@@ -82,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
 
-                Row(children: [Expanded(child: Text("Size: ${_height.toStringAsFixed(1)}", style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
+                Row(children: [Expanded(child: Text("Size: ${_height.toStringAsFixed(1)}", style: const TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
                 Slider(
                   value: _height,
                   max: 100,
@@ -97,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   },
                 ),
-                Row(children: [Expanded(child: Text("Position (Vertical): ${_vPosition.toStringAsFixed(1)}", style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
+                Row(children: [Expanded(child: Text("Position (Vertical): ${_vPosition.toStringAsFixed(1)}", style: const TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
                 Slider(
                   value: _vPosition,
                   max: (MediaQuery.of(context).size.width) / 4,
@@ -110,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   },
                 ),
-                Row(children: [Expanded(child: Text("Position (Horizontal) ${_hPosition.toStringAsFixed(1)}", style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
+                Row(children: [Expanded(child: Text("Position (Horizontal) ${_hPosition.toStringAsFixed(1)}", style: const TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
                 Slider(
                   value: _hPosition,
                   min: -(MediaQuery.of(context).size.width) / 2,
