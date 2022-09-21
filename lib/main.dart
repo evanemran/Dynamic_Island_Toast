@@ -33,9 +33,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   double _width = 20;
   double _height = 20;
+  double savedWidth = 20;
+  double savedHeight = 20;
+  double _vPosition = 0;
+  double _hPosition = 0;
   String toast = "";
   final Color _color = Colors.black;
-  final BorderRadiusGeometry _borderRadius = BorderRadius.circular(25);
+
+  final BorderRadiusGeometry _borderRadius = BorderRadius.circular(100);
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: const EdgeInsets.fromLTRB(10,0,10,0),
             child: Transform.translate(
-                offset: const Offset(0, 9),
+                offset: Offset(_hPosition, _vPosition),
             child: AnimatedContainer(
               width: _width,
               height: _height,
@@ -76,6 +81,49 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+
+                Row(children: [Expanded(child: Text("Size: $_height", style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
+                Slider(
+                  value: _height,
+                  max: 100,
+                  divisions: 100,
+                  label: _height.round().toString(),
+                  onChanged: (double value) {
+                    setState(() {
+                      savedWidth = value;
+                      savedHeight = value;
+                      _height = value;
+                      _width = value;
+                    });
+                  },
+                ),
+                Row(children: [Expanded(child: Text("Position (Vertical): $_vPosition", style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
+                Slider(
+                  value: _vPosition,
+                  max: (MediaQuery.of(context).size.width) / 4,
+                  min: -(MediaQuery.of(context).size.width) / 4,
+                  divisions: 100,
+                  label: _vPosition.round().toString(),
+                  onChanged: (double value) {
+                    setState(() {
+                      _vPosition = value;
+                    });
+                  },
+                ),
+                Row(children: [Expanded(child: Text("Position (Horizontal) $_hPosition", style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.start,))],),
+                Slider(
+                  value: _hPosition,
+                  min: -(MediaQuery.of(context).size.width) / 2,
+                  max: (MediaQuery.of(context).size.width) / 2,
+                  divisions: 100,
+                  label: _hPosition.round().toString(),
+                  onChanged: (double value) {
+                    setState(() {
+                      _hPosition = value;
+                    });
+                  },
+                ),
+                
                 Row(children: [Expanded(child: ElevatedButton(
                     onPressed: () {
                       showShortToast();
@@ -113,8 +161,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     Future.delayed(const Duration(seconds: 5), () {
-      _width = 20;
-      _height = 20;
+      _width = savedWidth;
+      _height = savedHeight;
       toast = "";
       setState(() {
 
@@ -137,8 +185,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     Future.delayed(const Duration(seconds: 5), () {
-      _width = 20;
-      _height = 20;
+      _width = _width;
+      _height = _height;
       toast = "";
       setState(() {
 
